@@ -48,7 +48,7 @@ const getAllProducts = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Something went wrong. Products fetched successfully!',
+      message: 'Something went wrong. Products fetched unsuccessful!',
       error: error,
     });
   }
@@ -68,7 +68,30 @@ const getOneProduct = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Something went wrong.',
+      message: 'Something went wrong. Product not found!',
+      error: error,
+    });
+  }
+};
+
+const updateProduct = async (req: Request, res: Response) => {
+  try {
+    const product = req.body;
+    const { productId } = req.params;
+    const result = await ProductServices.updateProductFromDB(
+      productId,
+      product,
+    );
+
+    res.status(200).json({
+      success: true,
+      message: 'Product updated successfully!',
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong. Couldn't update the product.",
       error: error,
     });
   }
@@ -78,4 +101,5 @@ export const ProductControllers = {
   createProduct,
   getAllProducts,
   getOneProduct,
+  updateProduct,
 };
