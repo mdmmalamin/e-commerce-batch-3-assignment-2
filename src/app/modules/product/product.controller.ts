@@ -35,6 +35,9 @@ const createProduct = async (req: Request, res: Response) => {
   }
 };
 
+const getAllProducts = async (req: Request, res: Response) => {};
+
 export const ProductControllers = {
   createProduct,
+  getAllProducts,
 };
