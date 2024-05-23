@@ -8,4 +8,4 @@ router.post('/', OrderControllers.createOrder);
 // router.get('/', ProductControllers.getAllProducts);
 // router.get('/:productId', ProductControllers.getOneProduct);
 
-export const ProductRoutes = router;
+export const OrderRoutes = router;
