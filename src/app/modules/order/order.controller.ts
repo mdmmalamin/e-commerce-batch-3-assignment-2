@@ -57,10 +57,10 @@ const getAllOrders = async (req: Request, res: Response) => {
 const getOrderByEmail = async (req: Request, res: Response) => {
   try {
     const orderByEmail = req.query.email;
-    console.log(orderByEmail)
+    // console.log(orderByEmail);
     if (!orderByEmail) {
       const result = await OrderServices.getAllOrderFromDB();
-console.log("first", result)
+      // console.log('first', result);
       // send response
       res.status(200).json({
         success: true,
@@ -69,10 +69,14 @@ console.log("first", result)
       });
     } else {
       const result = await OrderServices.getOrderByEmailFromDB(orderByEmail);
-console.log(result)
+      // console.log('return:', result);
+
       res.status(200).json({
-        success: true,
-        message: 'Orders fetched successfully for user email!',
+        success: result.length === 0 ? false : true,
+        message:
+          result.length === 0
+            ? 'Order not found'
+            : 'Orders fetched successfully for user email!',
         data: result,
       });
     }

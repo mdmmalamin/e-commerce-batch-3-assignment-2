@@ -11,7 +11,7 @@ const getAllOrderFromDB = async () => {
   return result;
 };
 
-const getOrderByEmailFromDB = async (email: any) => {
+const getOrderByEmailFromDB = async (email: unknown) => {
   // search with name --> searchTerm
   // console.log(name);
   const result = await OrderModel.find({ email });

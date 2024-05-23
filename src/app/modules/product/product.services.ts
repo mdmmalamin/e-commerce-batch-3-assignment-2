@@ -29,7 +29,7 @@ const deleteProductFromDB = async (_id: string) => {
   return result;
 };
 
-const searchProductFromDB = async (name: any) => {
+const searchProductFromDB = async (name: unknown) => {
   // search with name --> searchTerm
   // console.log(name);
   const result = await ProductModel.find({

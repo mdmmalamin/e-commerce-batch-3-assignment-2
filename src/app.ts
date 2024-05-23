@@ -12,8 +12,19 @@ app.use(cors());
 app.use('/api/products', ProductRoutes);
 app.use('/api/orders', OrderRoutes);
 
+app.get('*', (req: Request, res: Response) => {
+  res.status(200).json({
+    success: false,
+    message: 'Route not found',
+  });
+});
+
 app.get('/', (req: Request, res: Response) => {
   res.send('Welcome to e-commerce batch-3 assignment-2!');
+  // res.status(200).json({
+  //   success: true,
+  //   message: 'Welcome to e-commerce batch-3 assignment-2!',
+  // });
 });
 
 export default app;
